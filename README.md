@@ -1,6 +1,6 @@
 # heliometric-stereo-data-pack
 
-Data pack for publication "Heliometric stereo: a new frontier in surface profilometry".
+Data pack for publication "Heliometric stereo: a new frontier in surface profilometry". An [arXiv preprint is available](https://doi.org/10.48550/arXiv.2501.14833). The doi link to the final publication will be added once available.
 
 The data packs at [doi.org/10.17863/CAM.107537](http://doi.org/10.17863/CAM.107537) and [doi.org/10.17863/CAM.114465](https://doi.org/10.17863/CAM.114465) also support the publication, some, but not all, of the data is reproduced here.
 

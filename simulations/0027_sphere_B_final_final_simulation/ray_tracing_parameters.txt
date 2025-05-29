@@ -1,0 +1,99 @@
+%% Parameter file for SHeM ray tracing
+% Most of the basic parameters can be specified here, although there is some 
+% greater functionality available through directly editing the main script.
+%
+% Lines that start with '%' will be ignored, feel free to add your own comments.
+
+%% Set up your virtual microscope
+% Models of the pinhole plate that can be used, for any of the CAD models
+% make sure to set the correct design working distance:
+% - 'cambridge', WD=2.12
+% - 'angular resolution', WD=2
+% - 'cambridge new', WD=2.12
+% - 'crude annular', WD=3
+% - 'normal incidence 3mm', WD=3?
+% - 'N circle'
+% - 'abstract', specifies a detection direction only
+% New models of plate can be added by creating an appropriate CAD file and
+% then writing a function in 'functions/pinhole_plate_import/', and adding
+% it as an option in 'functions/pinhole_import.m' and 
+% 'functions/parsing_functions/parse_pinhole.m' which parses this file. For
+%
+% Type of scan can be:
+%  - 'rectangular', A single image centred on the centre of the sample
+%  - 'rectangular_z', multiple images at a series of z positions
+%  - 'rotations',  A series of images rotating the sample
+%  - 'line', A single line scan (specify which axis)
+%  - 'line_rotations', A series of z scans while rotating the sample
+%  - 'line_detector_slide', 
+Design working distance (mm): 4
+Incidence angle (deg): 30
+Type of scan: rectangular
+Number of detectors: 3
+Detector full axes (x1,y1,x2,y2,...), mm: (1.3856, 1.2, 1.3856, 1.2, 1.3856, 1.2)
+Detector centres (x1,y1,x2,y2,...), mm: (2.3094, 0, -1.1547, 2, -1.1547, -2)
+Rotate detectors (th1, th2, ...), deg: (0, -60, 60)
+Rotation angles (only needed for 'rotations'/'line_rotations'): (-90, - , 2.5, -, 90)
+Detector positions (only for 'line_detector_slide'): (-3.5, -, 0.1, -, 3.5)
+%Z to use (only needed if 'rectangular_z' scan used): (-1, -, 0.5, -, 2) <- TODO
+STL pinhole model: N circle
+Location of abstract detector (theta, phi), deg: (70, 0)
+Half cone angle of detector, deg: 10 
+
+%% Set up your source
+% There are three models of the source, 'Uniform' source at the skimmer, or a
+% 'Gaussian', finally the source may be 'Infinite' which gives the initial
+% beam as a single ray with the rest of the rays generated upon the first
+% scattering event. In the first case provide the maximum angular value, in the second
+% case provide the angular standard deviation. A cosine effuse beam may also be
+% modelled coming from the pinhole.
+Number of Rays: 35000
+Pinhole radius (mm): 0.001
+Source model: Uniform
+Angular source size (rad): 0.0005
+Source standard deviation (rad): 0.02
+Effuse beam: Off
+Effuse size (relative to the direct beam): 5
+
+%% Set up your sample
+% There are a few inbuilt samples or you can provide your own stl/obj file of a
+% sample, options are: 'flat', 'sphere', 'custom', 'photoStereo', 'circle',
+% 'poly_crystal'
+%  - If you are using the 'sphere' option specify the radius of sphere.
+%  - If using the 'flat' option specify the size of the flat square sample.
+%  - If using the 'circle' option specify the radius of the flat circular sample
+%  - If specifying your own sample specify the name and path to the stl file,
+%    please use a file name and path without spaces
+% In general it is advised to avoid manual alignment of the sample
+What type of sample are you useing: sphere
+Scattering: cosine
+Reflectivity: 0.5
+Standard deviation (deg): 10
+Sample description: Sphere B
+Working distance to place the sample at: 5.04
+Sphere radii (r1, r2, ...) (mm): (1)
+Sphere centres (x1, y1, x2, y2, ...) (mm): (0, 0)
+Circle radius (mm): 2
+Length of side of flat sample: 8
+Custom sample stl file: samples/MoS2_flat_1.obj
+Manual alignment: no
+
+%% Set up your scan
+% This assumes you are doing a 2D rectangular scan centering on the
+% middle on the sample.     
+Pixel seperation (mm): 0.01
+Scan range x (mm): 3.5
+Scan range y (mm): 3.5
+Ignore incidence angle in scan pattern: no
+
+% This assumes you are doing a 1D scan
+Scan direction: y
+Scan min (mm): -2
+Scan max (mm): 4
+Pixel seperation (mm): 0.2
+
+%% Other parameters
+Label for the output directory (no spaces please): sphere_B_final_final_simulation
+
+Sould the C code be recompiled: false
+

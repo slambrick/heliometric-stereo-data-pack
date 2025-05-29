@@ -1,5 +1,12 @@
+% May 2025 SM Lambrick
+%
+% This file calculates the speed up in image aquisition of the B-SHeM 3D
+% reconstructions over the A-SHeM ones.
+
 % Bad...
 clear;clc;
+
+addpath('datafiles')
 
 %% A SHeM
 % 5 scans taken on the A-SHeM
